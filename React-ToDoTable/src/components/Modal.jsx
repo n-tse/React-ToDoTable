@@ -11,15 +11,15 @@ export const Modal = () => {
     <div className='modal-container'>
       <div className="modal">
         <form>
-          <div>
+          <div className='form-group'>
             <label htmlFor='task'>Task</label>
             <input type='text'/>
           </div>
-          <div>
+          <div className='form-group'>
             <label htmlFor='description'>Description</label>
             <textarea name='task'/>
           </div>
-          <div>
+          <div className='form-group'>
             <label htmlFor='priority'>Priority</label>
             <select name='priority' id='priority'>
               <option value='low'>Low</option>
@@ -27,7 +27,7 @@ export const Modal = () => {
               <option value='high'>High</option>
             </select>
           </div>
-          <div>
+          <div className='form-group'>
             <label htmlFor='status'>Status</label>
             <select name='status' id='status'>
               <option value='not-started'>Not Started</option>
@@ -35,7 +35,7 @@ export const Modal = () => {
               <option value='completed'>Completed</option>
             </select>
           </div>
-          <button type='submit' onClick={handleClick}>Submit</button>
+          <button type='submit' className='btn' onClick={handleClick}>Submit</button>
         </form>
       </div>
     </div>

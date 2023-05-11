@@ -18,7 +18,17 @@
   background-color: white;
   padding: 2rem;
   width: 25em;
-  height: 20vh;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.modal .btn {
+  display: block;
+  margin: auto;
+}
+
+.form-group {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
 }
