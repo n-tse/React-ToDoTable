@@ -2,7 +2,11 @@ import React from "react";
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import "./css/Table.css";
 
-export const Table = () => {
+export const Table = ({ items, setItems }) => {
+  const handleDelete = (index) => {
+    setItems(items.filter((item, idx) => idx !== index));
+  };
+
   return (
     <div className="table-container">
       <table className="table">
@@ -16,39 +20,30 @@ export const Table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Laundry</td>
-            <td>Short description for task</td>
-            <td>Low</td>
-            <td>Completed</td>
-            <td>
-              <span className="actions">
-                <BsFillPencilFill /> <BsFillTrashFill />
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>Get car serviced</td>
-            <td>Short description for task</td>
-            <td>Medium</td>
-            <td>In progress</td>
-            <td>
-              <span className="actions">
-                <BsFillPencilFill /> <BsFillTrashFill />
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>Plan Vacation</td>
-            <td>Short description for task</td>
-            <td>Low</td>
-            <td>Not started</td>
-            <td>
-              <span className="actions">
-                <BsFillPencilFill /> <BsFillTrashFill />
-              </span>
-            </td>
-          </tr>
+          {items.length !== 0 ? (
+            items.map((item, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>{item.task}</td>
+                  <td>{item.description}</td>
+                  <td>{item.priority}</td>
+                  <td>{item.status}</td>
+                  <td>
+                    <span className="actions">
+                      <BsFillPencilFill />{" "}
+                      <BsFillTrashFill onClick={() => handleDelete(idx)} />
+                    </span>
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td>
+                No data
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
