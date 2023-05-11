@@ -27,13 +27,17 @@ function App() {
     },
   ]);
 
+  const addNewTask = (data) => {
+    setItems([...items, data]);
+  }
+
   return (
     <div className="App">
       <Table items={items} setItems={setItems} />
       <button className="btn" onClick={() => setModalOpen(true)}>
         Add
       </button>
-      {modalOpen && <Modal setModalOpen={setModalOpen} />}
+      {modalOpen && <Modal setModalOpen={setModalOpen} addNewTask={addNewTask}/>}
     </div>
   );
 }

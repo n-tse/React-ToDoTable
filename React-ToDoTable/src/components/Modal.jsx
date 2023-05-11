@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import "./css/Modal.css";
 
-export const Modal = ({ setModalOpen }) => {
+export const Modal = ({ setModalOpen, addNewTask }) => {
   const [formData, setFormData] = useState({
     task: "",
     description: "",
     priority: "Low",
     status: "Not started",
   });
-  const capitalize = (s) => {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ formData });
+    setModalOpen(false);
+    addNewTask(formData);
   };
 
   return (

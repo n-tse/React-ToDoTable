@@ -7,6 +7,11 @@ export const Table = ({ items, setItems }) => {
     setItems(items.filter((item, idx) => idx !== index));
   };
 
+  const capitalize = (s) => {
+    let capitalized = s.charAt(0).toUpperCase() + s.slice(1);
+    return capitalized.replace("-", " ");
+  };
+
   return (
     <div className="table-container">
       <table className="table">
@@ -26,8 +31,8 @@ export const Table = ({ items, setItems }) => {
                 <tr key={idx}>
                   <td>{item.task}</td>
                   <td>{item.description}</td>
-                  <td>{item.priority}</td>
-                  <td>{item.status}</td>
+                  <td>{capitalize(item.priority)}</td>
+                  <td>{capitalize(item.status)}</td>
                   <td>
                     <span className="actions">
                       <BsFillPencilFill />{" "}
