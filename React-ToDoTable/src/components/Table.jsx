@@ -28,7 +28,7 @@ export const Table = ({ items, setItems }) => {
           {items.length !== 0 ? (
             items.map((item, idx) => {
               return (
-                <tr key={idx}>
+                <tr key={idx} className="taskItem">
                   <td>{item.task}</td>
                   <td>{item.description}</td>
                   <td>{capitalize(item.priority)}</td>
@@ -44,7 +44,7 @@ export const Table = ({ items, setItems }) => {
             })
           ) : (
             <tr>
-              <td>
+              <td colSpan="5" style={{textAlign:"center", padding:"1.5rem"}}>
                 No data
               </td>
             </tr>
