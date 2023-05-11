@@ -31,8 +31,8 @@ export const Table = ({ items, setItems }) => {
                 <tr key={idx} className="taskItem">
                   <td>{item.task}</td>
                   <td>{item.description}</td>
-                  <td>{capitalize(item.priority)}</td>
-                  <td>{capitalize(item.status)}</td>
+                  <td style={{textAlign:"center"}}>{capitalize(item.priority)}</td>
+                  <td style={{textAlign:"center"}}>{capitalize(item.status)}</td>
                   <td>
                     <span className="actions">
                       <BsFillPencilFill />{" "}
