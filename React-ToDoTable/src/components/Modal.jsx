@@ -8,12 +8,36 @@ export const Modal = ({ setModalOpen, addNewTask }) => {
     priority: "Low",
     status: "Not started",
   });
+  const [errors, setErrors] = useState([]);
+
+  const capitalize = (s) => {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
+
+  const isMissingFields = () => {
+    if (!formData.task || !formData.description) {
+      let missingFields = [];
+      for (const [key, value] of Object.entries(formData)) {
+        if (value === "") {
+          missingFields.push(capitalize(key));
+        }
+      }
+      setErrors(missingFields);
+      return true;
+    } else {
+      setErrors("");
+      return false;
+    };
+  }
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isMissingFields()) {
+      return;
+    };
     setModalOpen(false);
     addNewTask(formData);
   };
@@ -70,6 +94,18 @@ export const Modal = ({ setModalOpen, addNewTask }) => {
               <option value="completed">Completed</option>
             </select>
           </div>
+          {errors.length > 0 && (
+            <div className="error-message">
+              Missing Fields:
+              <ul className="indented-list">
+                {errors.map((ele) => 
+                  <li>
+                    {ele}
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
           <button type="submit" className="btn" onClick={handleSubmit}>
             Submit
           </button>

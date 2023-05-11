@@ -47,3 +47,21 @@
   font-weight: bold;
   margin-bottom: 1px;
 }
+
+.error-message {
+  background-color:rgba(255, 174, 174, 0.614);
+  width: 50%;
+  color: rgb(255, 81, 81);
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.indented-list {
+  padding-left: 1rem;
+}
