@@ -2,7 +2,7 @@ import React from "react";
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 import "./css/Table.css";
 
-export const Table = ({ items, setItems }) => {
+export const Table = ({ items, setItems, editRow }) => {
   const handleDelete = (index) => {
     setItems(items.filter((item, idx) => idx !== index));
   };
@@ -35,7 +35,7 @@ export const Table = ({ items, setItems }) => {
                   <td style={{textAlign:"center"}}>{capitalize(item.status)}</td>
                   <td>
                     <span className="actions">
-                      <BsFillPencilFill />{" "}
+                      <BsFillPencilFill onClick={() => editRow(idx)}/>{" "}
                       <BsFillTrashFill onClick={() => handleDelete(idx)} />
                     </span>
                   </td>

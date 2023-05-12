@@ -4,7 +4,7 @@ import { Modal } from "./components/Modal";
 import "./App.css";
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const [items, setItems] = useState([
     {
@@ -27,17 +27,38 @@ function App() {
     },
   ]);
 
+  const [rowToEdit, setRowToEdit] = useState(null);
+
+  const handleEditRow = (index) => {
+    setRowToEdit(index);
+    setShowModal(true);
+  };
+
   const addNewTask = (data) => {
-    setItems([...items, data]);
-  }
+    rowToEdit === null
+      ? setItems([...items, data])
+      : setItems(
+          items.map((item, index) => {
+            // if (index !== rowToEdit) return item;
+            // return data;
+            return index !== rowToEdit ? item : data;
+          })
+        );
+  };
 
   return (
     <div className="App">
-      <Table items={items} setItems={setItems} />
-      <button className="btn" onClick={() => setModalOpen(true)}>
+      <Table items={items} setItems={setItems} editRow={handleEditRow} />
+      <button className="btn" onClick={() => setShowModal(true)}>
         Add
       </button>
-      {modalOpen && <Modal setModalOpen={setModalOpen} addNewTask={addNewTask}/>}
+      {showModal && (
+        <Modal
+          setShowModal={setShowModal}
+          addNewTask={addNewTask}
+          defaultValue={rowToEdit !== null && items[rowToEdit]}
+        />
+      )}
     </div>
   );
 }

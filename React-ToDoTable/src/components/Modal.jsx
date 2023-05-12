@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./css/Modal.css";
 
-export const Modal = ({ setModalOpen, addNewTask }) => {
-  const [formData, setFormData] = useState({
+export const Modal = ({ setShowModal, addNewTask, defaultValue }) => {
+  const [formData, setFormData] = useState(defaultValue || {
     task: "",
     description: "",
     priority: "Low",
@@ -38,7 +38,7 @@ export const Modal = ({ setModalOpen, addNewTask }) => {
     if (isMissingFields()) {
       return;
     };
-    setModalOpen(false);
+    setShowModal(false);
     addNewTask(formData);
   };
 
@@ -46,7 +46,7 @@ export const Modal = ({ setModalOpen, addNewTask }) => {
     <div
       className="modal-container"
       onClick={(e) =>
-        e.target.className === "modal-container" && setModalOpen(false)
+        e.target.className === "modal-container" && setShowModal(false)
       }
     >
       <div className="modal">
