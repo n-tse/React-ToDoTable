@@ -46,6 +46,11 @@ function App() {
         );
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+    setRowToEdit(null);
+  }
+
   return (
     <div className="App">
       <Table items={items} setItems={setItems} editRow={handleEditRow} />
@@ -54,7 +59,8 @@ function App() {
       </button>
       {showModal && (
         <Modal
-          setShowModal={setShowModal}
+          // setShowModal={setShowModal}
+          closeModal={closeModal}
           addNewTask={addNewTask}
           defaultValue={rowToEdit !== null && items[rowToEdit]}
         />

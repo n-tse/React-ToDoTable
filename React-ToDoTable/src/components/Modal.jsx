@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css/Modal.css";
 
-export const Modal = ({ setShowModal, addNewTask, defaultValue }) => {
+export const Modal = ({ setShowModal, closeModal, addNewTask, defaultValue }) => {
   const [formData, setFormData] = useState(defaultValue || {
     task: "",
     description: "",
@@ -38,7 +38,8 @@ export const Modal = ({ setShowModal, addNewTask, defaultValue }) => {
     if (isMissingFields()) {
       return;
     };
-    setShowModal(false);
+    // setShowModal(false);
+    closeModal();
     addNewTask(formData);
   };
 
@@ -46,7 +47,9 @@ export const Modal = ({ setShowModal, addNewTask, defaultValue }) => {
     <div
       className="modal-container"
       onClick={(e) =>
-        e.target.className === "modal-container" && setShowModal(false)
+        e.target.className === "modal-container" && 
+        // setShowModal(false)
+        closeModal()
       }
     >
       <div className="modal">
