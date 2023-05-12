@@ -53,6 +53,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{marginBottom:"2rem"}}>To Do Table</h1>
       <Table items={items} setItems={setItems} editRow={handleEditRow} />
       <button className="btn" onClick={() => setShowModal(true)}>
         Add
