@@ -15,7 +15,7 @@ export const Modal = ({ closeModal, addNewTask, defaultValue }) => {
   };
 
   const isMissingFields = () => {
-    if (!formData.task || !formData.description) {
+    if (!formData.task || !formData.description || !formData.priority) {
       let missingFields = [];
       for (const [key, value] of Object.entries(formData)) {
         if (value === "") {
