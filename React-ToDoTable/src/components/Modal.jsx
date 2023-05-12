@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./css/Modal.css";
 
-export const Modal = ({ setShowModal, closeModal, addNewTask, defaultValue }) => {
+export const Modal = ({ closeModal, addNewTask, defaultValue }) => {
   const [formData, setFormData] = useState(defaultValue || {
     task: "",
     description: "",
-    priority: "Low",
-    status: "Not started",
+    priority: "",
+    status: "not-started",
   });
   const [errors, setErrors] = useState([]);
 
@@ -38,7 +38,6 @@ export const Modal = ({ setShowModal, closeModal, addNewTask, defaultValue }) =>
     if (isMissingFields()) {
       return;
     };
-    // setShowModal(false);
     closeModal();
     addNewTask(formData);
   };
@@ -48,7 +47,6 @@ export const Modal = ({ setShowModal, closeModal, addNewTask, defaultValue }) =>
       className="modal-container"
       onClick={(e) =>
         e.target.className === "modal-container" && 
-        // setShowModal(false)
         closeModal()
       }
     >
@@ -79,7 +77,7 @@ export const Modal = ({ setShowModal, closeModal, addNewTask, defaultValue }) =>
               value={formData.priority}
               onChange={handleChange}
             >
-              <option value="low">Low</option>
+              <option value="" selected disabled hidden>Select an option</option><option value="low" selected>Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>

@@ -31,12 +31,20 @@ export const Table = ({ items, setItems, editRow }) => {
                 <tr key={idx} className="taskItem">
                   <td>{item.task}</td>
                   <td>{item.description}</td>
-                  <td style={{textAlign:"center"}}>{capitalize(item.priority)}</td>
-                  <td style={{textAlign:"center"}}>{capitalize(item.status)}</td>
+                  <td className="priority-col">
+                    <span
+                      className={`taskPriority taskPriority-${item.priority}`}
+                    >
+                      {capitalize(item.priority)}
+                    </span>
+                  </td>
+                  <td style={{ textAlign: "center" }}>
+                    {capitalize(item.status)}
+                  </td>
                   <td>
                     <span className="actions">
-                      <BsFillPencilFill onClick={() => editRow(idx)}/>{" "}
-                      <BsFillTrashFill onClick={() => handleDelete(idx)} />
+                      <BsFillPencilFill onClick={() => editRow(idx)} />{" "}
+                      <BsFillTrashFill onClick={() => handleDelete(idx)} style={{color:"red"}}/>
                     </span>
                   </td>
                 </tr>
@@ -44,7 +52,10 @@ export const Table = ({ items, setItems, editRow }) => {
             })
           ) : (
             <tr>
-              <td colSpan="5" style={{textAlign:"center", padding:"1.5rem"}}>
+              <td
+                colSpan="5"
+                style={{ textAlign: "center", padding: "1.5rem" }}
+              >
                 No data
               </td>
             </tr>

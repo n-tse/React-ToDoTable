@@ -10,20 +10,20 @@ function App() {
     {
       task: "Laundry",
       description: "short description for task",
-      priority: "Low",
-      status: "Completed",
+      priority: "low",
+      status: "completed",
     },
     {
       task: "Get car serviced",
       description: "short description for task",
-      priority: "High",
-      status: "In progress",
+      priority: "high",
+      status: "in-progress",
     },
     {
       task: "Plan vacation",
       description: "short description for task",
-      priority: "Medium",
-      status: "Not started",
+      priority: "medium",
+      status: "not-started",
     },
   ]);
 
@@ -59,7 +59,6 @@ function App() {
       </button>
       {showModal && (
         <Modal
-          // setShowModal={setShowModal}
           closeModal={closeModal}
           addNewTask={addNewTask}
           defaultValue={rowToEdit !== null && items[rowToEdit]}
